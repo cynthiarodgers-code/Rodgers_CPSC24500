@@ -57,5 +57,12 @@ print(f"Lucky Number: {lucky_number}")
 print(f"Category: {category}")
 print(f"Lucky Percentage: {round(lucky_percent * 100)}")
 print(f"Fortune: {selected_fortune}")
+print("")
+with open("fortune_output.txt", "w") as f:
+    print("Fortune saved to fortune_output.txt.")
+print("")
+print("************************************")
+print("Goodbye Cynthia! Fortune awaits you!")
+print("************************************")
 
 
