@@ -6,10 +6,12 @@ print('*-*-*-*-*-*')
 
 
 name = input("Please enter your full name (first and last name): ")
-age = input("Please enter your age (a postive integer): ")
+age = float(input("Please enter your age (a postive integer): "))
 color = input("Please enter your favorite color: ")
 
-lucky_number = random.randint(1,10)
+lucky_number = float(random.randint(1,10))
+
+lucky_percent = (lucky_number / age)
 
 fortunes = [
     "You will find a gem today. ",
@@ -18,7 +20,7 @@ fortunes = [
     "Expect a surprise visit from an old friend. ",
     "Always rememver that you are loved. ",
     "Your hard work will pay off soon. ",
-    "Enjoy this day like its your last. ",
+    "Enjoy this day like it's your last. ",
     "Call someone and tell them you love them. "
 ]
 selected_fortune = random.choice(fortunes)
@@ -50,8 +52,10 @@ print("\n--- Your Fortune Summary ---")
 print(f"Name: {name_trimmed.upper()}")
 print(f"Name length: {len(name_trimmed)} characters")
 print(f"Age: {age}")
+print(f"Favorite Color: {color.lower()}")
 print(f"Lucky Number: {lucky_number}")
 print(f"Category: {category}")
+print(f"Lucky Percentage: {round(lucky_percent * 100)}")
 print(f"Fortune: {selected_fortune}")
 
 
