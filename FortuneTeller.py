@@ -18,7 +18,7 @@ fortunes = [
     "Success is coming your way. ",
     "Believe in yourself and you can do anything. ",
     "Expect a surprise visit from an old friend. ",
-    "Always rememver that you are loved. ",
+    "Always remember that you are loved. ",
     "Your hard work will pay off soon. ",
     "Enjoy this day like it's your last. ",
     "Call someone and tell them you love them. "
