@@ -23,11 +23,14 @@ TAX_RATE = 0.0875
 
 class Order:
 
-    def __init__(self, customer_name):
+    def __init__(self, customer_name, items=None):
         # TODO: store the customer name
         # TODO: initialize an empty list for items
         self.customer_name = customer_name
-        self.items[]
+        if items is None:
+            self.items = []
+        else:
+            self.items = items
 
     def add_item(self, item):
         # TODO: append the item to self.items
