@@ -38,7 +38,7 @@ class MenuItem:
 
         def add_item(self, name, price):
             self.items.append(MenuItem(name, price))
-            
+
         def display_menu(self):
             print("--- Drink Menu ---")
             for index, item in enumerate(self.items, start=1):
@@ -109,20 +109,13 @@ class MenuItem:
             if choice == "1":
                 print("\n-- Drink Menu ---")
                 for name, size in MenuItem():
-                    print(f"- {name}: {size}") 
-
-                drink_name = input("Enter Drink name: ")
-                if drink_name in MenuItem: 
-                    size = input("Enter size {list(menu[drink_name];keys())}:")
-                    if size in MenuItem[drink_name]:
-                        price = MenuItem[drink_name][size]
-                        item = MenuItem(drink_name, size, price)
-                        current_order.add_item(item)
-                        print(f"Added {item} to order.")
-                    else:
-                        print("Invalid size.")
-                else:
-                    print("Invalid drink name.")
+                    print("{name}: {size}")
+                
+                print(f"Added {item} to order.")
+            else:
+                print("Invalid size.")
+            else:
+                print("Invalid drink name.")
            
             elif choice == "2":
                 if not current_order.items:
