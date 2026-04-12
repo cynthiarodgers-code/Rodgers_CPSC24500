@@ -112,6 +112,7 @@ class MenuItem:
                     print(f"{name}: {size}")
                 
                     print(f"Added {item} to order.")
+                    
                 else:
                     print("Invalid size or drink name.")
             

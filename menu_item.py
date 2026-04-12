@@ -23,6 +23,10 @@ class MenuItem:
         self.items = items
         self.base_price = self.base_price
         
+        name = [("1. Americano, 2.Cappucino, 3. Espresso, 4. Latte")]
+        size = [("1. Small, 2. Medium, 3. Large")]
+
+        price = self.calculate_price
         
         items = [("Americano", "Small", 3.50),
         ("Cappucino", "Small", 4.25),
