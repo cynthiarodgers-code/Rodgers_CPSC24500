@@ -108,14 +108,13 @@ class MenuItem:
 
             if choice == "1":
                 print("\n-- Drink Menu ---")
-                for name, size in MenuItem():
-                    print("{name}: {size}")
+                for self.name, self.size in MenuItem():
+                    print(f"{name}: {size}")
                 
-                print(f"Added {item} to order.")
-            else:
-                print("Invalid size.")
-            else:
-                print("Invalid drink name.")
+                    print(f"Added {item} to order.")
+                else:
+                    print("Invalid size or drink name.")
+            
            
             elif choice == "2":
                 if not current_order.items:

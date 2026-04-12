@@ -19,9 +19,10 @@ class MenuItem:
         # TODO: store name, size, and price as instance attributes
         self.name = name
         self.size = size
+        self.price = self.calculate_price() 
         self.items = items
         self.base_price = self.base_price
-        self.price = self.calculate_price() 
+        
         
         items = [("Americano", "Small", 3.50),
         ("Cappucino", "Small", 4.25),
@@ -42,7 +43,7 @@ class MenuItem:
     def __str__(self):
         # TODO: return a string in the format "Latte (Large) - $6.00"
         # Hint: f"{self.name} ({self.size}) - ${self.price:.2f}"
-        return f"{self.name} ({self.size}) - ${self.price:.2f}"
+        return (f"{self.name} ({self.size}) - ${self.price:.2f}")
             
     
 
