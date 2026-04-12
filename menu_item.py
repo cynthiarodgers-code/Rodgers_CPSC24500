@@ -15,13 +15,23 @@ Methods:
 
 class MenuItem:
 
-    def __init__(self, name, size, price):
+    def __init__(self, name, size, price, items):
         # TODO: store name, size, and price as instance attributes
         self.name = name
         self.size = size
+        self.items = items
         self.base_price = self.base_price
         self.price = self.calculate_price() 
-        pass
+        
+        items = [("Americano", "Small", 3.50),
+        ("Cappucino", "Small", 4.25),
+        ("Espresso", "Small",3.00),
+        ("Latte", "Small", 4.75)]
+
+        menu = [items]
+
+        for items in menu:
+            print(items)
     
     def calculate_price(self):
         upcharges = {"Small": 0.00, "Medium": 0.75, "Large": 1.25}
@@ -33,17 +43,8 @@ class MenuItem:
         # TODO: return a string in the format "Latte (Large) - $6.00"
         # Hint: f"{self.name} ({self.size}) - ${self.price:.2f}"
         return f"{self.name} ({self.size}) - ${self.price:.2f}"
-        pass
+            
     
-    item1 = MenuItem("Americano", "Small", 3.50)
-    item2 = MenuItem("Cappucino", "Small", 4.25)
-    item3 = MenuItem("Espresso", "Small",3.00)
-    item4 = MenuItem("Latte", "Small", 4.75)
-
-    menu = [item1, item2, item3, item4]
-
-    for item in menu:
-        print(item)
 
 
     
