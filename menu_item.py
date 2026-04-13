@@ -15,12 +15,11 @@ Methods:
 
 class MenuItem:
 
-    def __init__(self, name, size, price, items):
+    def __init__(self, name, size, price):
         # TODO: store name, size, and price as instance attributes
         self.name = name
         self.size = size
-        self.price = self.calculate_price() 
-        self.items = items
+        self.price = price
         self.base_price = self.base_price
         
         name = [("1. Americano, 2.Cappucino, 3. Espresso, 4. Latte")]
