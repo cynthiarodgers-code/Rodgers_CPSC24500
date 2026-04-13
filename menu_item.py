@@ -40,7 +40,8 @@ class MenuItem:
     def calculate_price(self):
         upcharges = {"Small": 0.00, "Medium": 0.75, "Large": 1.25}
         size_upcharge = upcharges.get(self.size, 0.00)
-        return self.base_price + size_upcharge
+        final_price = self.base_price + size_upcharge
+        return final_price
 
 
     def __str__(self):

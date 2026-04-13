@@ -64,19 +64,29 @@ def choose_drink():
     # TODO: show size menu, get choice (1-3)
     # TODO: compute price = base + upcharge
     # TODO: return MenuItem(name, size, price)
-    drink_name = {1: ("Americano", 3.50), 2: ("Cappucino", 4.25), 3: ("Espresso", 3.00), 4: ("Latte", 4.75)}
-    size_name = {1: ("Small", 0.00), 2: ("Medium", 0.75), 3: ("Large", 1.25)}
-    print("Drink Menu: 1-Americano, 2-Cappucino, 3-Espresso, 4-Latte")
-    drink_choice = str(input("Enter drink number (1-4): ")) 
+    def __init__(self, drink_name, size_name, price):
+    
+        self.drink_name = drink_name
+        self.size_name = size_name
+        self.price = price
+        self.base_price = self.base_price
+        drink_name = {1: ("Americano", 3.50), 2: ("Cappucino", 4.25), 3: ("Espresso", 3.00), 4: ("Latte", 4.75)}
+        size_name = {1: ("Small", 0.00), 2: ("Medium", 0.75), 3: ("Large", 1.25)}
+        print("Drink Menu: 1-Americano, 2-Cappucino, 3-Espresso, 4-Latte")
+        drink_choice = int(input("Enter drink number (1-4): ")) 
     
 
-    print("Size Menu: 1-Small, 2-Medium, 3-Large")  
-    size_choice = str(input("Enter size number (1-3): "))
+        print("Size Menu: 1-Small, 2-Medium, 3-Large")  
+        size_choice = int(input("Enter size number (1-3): "))
+        
+        price = self.calculate_price
     
-
+    def calculate_price(self):
+        upcharges = {"Small": 0.00, "Medium": 0.75, "Large": 1.25}
+        size_upcharge = upcharges.get(self.size, 0.00)
+        final_price = self.base_price + size_upcharge
     
-
-    return (drink_choice, size_choice)    
+        return (drink_choice, size_choice, final_price)    
 
 
 def main():
@@ -102,8 +112,8 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == "1":
-            for drink_name, size_name in choose_drink():
-                print(f"{drink_choice}: {size_choice}")
+            for name, size, price in MenuItem(drink_name, size_name, final_price):
+                print(f"{drink_choice}: {size_choice}, {final_price}")
                 
                 print(f"Added {item} to order.")
 
