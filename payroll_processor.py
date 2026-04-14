@@ -19,13 +19,13 @@ class PayrollProcessor:
 
     def __init__(self):
         # TODO: initialize self._employees as an empty list
-        self_employees = []
+        self._employees = []
         
 
     @property
     def employees(self):
         # TODO: return a COPY of the list, not the original
-        employee_copy = self_employees.copy()
+        employee_copy = self._employees.copy()
         
 
     def load_from_file(self, filename):
