@@ -28,8 +28,6 @@ class Employee:
         self.hourly_rate = hourly_rate
         self.hours_worked = hours_worked
 
-        pass
-
     @property
     def name(self):
         return self._name
@@ -46,7 +44,6 @@ class Employee:
         
         self._name = name
 
-        pass
 
     @property
     def employee_id(self):
@@ -63,8 +60,6 @@ class Employee:
         
         self._employee_id = id
 
-        pass
-
     @property
     def hourly_rate(self):
         return self._hourly_rate
@@ -77,8 +72,6 @@ class Employee:
             raise ValueError("Hourly rate cannot be negative.")
         
         self._hourly_rate = value
-
-        pass
 
     @property
     def hours_worked(self):
@@ -93,7 +86,6 @@ class Employee:
         elif value > 168:
             raise ValueError("Hours worked cannot be above 168.")
         
-        pass
 
     def calculate_gross_pay(self):
         # TODO: regular pay = min(hours, 40) * rate
@@ -104,10 +96,8 @@ class Employee:
         overtime_pay = max(hours_worked - 40) * hourly_rate * 1.5
         gross_pay = regular_pay + overtime_pay
         return gross_pay
-        pass
 
     def __str__(self):
         # TODO: return a formatted line with name, ID, rate, hours, gross pay
         
-        return f"{self._name} - {self._employee_id}: {self._hourly_rate}, {self.hours_worked}, {gross_pay}"
-        pass
+        return f"{self._name} - {self._employee_id}: {self._hourly_rate}, {self.hours_worked}, {gross_pay}" 
