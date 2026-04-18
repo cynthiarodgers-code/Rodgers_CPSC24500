@@ -10,31 +10,28 @@ class PayrollReport:
 
     def __init__(self, processor):
         # TODO: store the processor
-        self.processor = processor
+        self._processor = processor
         
-
+    def get_employee_list(self):
+        return self._processor._employee
+    
     def display_all_employees(self):
         # TODO: print a header row, then each employee on its own line
 
-        print(f'{'ID' :<5} {'Name' :<20}')
+       print("\n--- Employee Payroll Data ---")
+
+       for employee in self._processor.employees:
+            print(f"ID: {employee.employee_id} | Name: {employee.name:<10} | Pay: ${employee.calculate_pay():.2f}")
         # Use self._processor.employees to get the list
-
-        for employee in self.processor.employees:
-            print(employee)
-
         
 
     def display_payroll_summary(self):
         # TODO: print total employees, total payroll, average pay,
         #       highest paid, lowest paid
-
-        if not self.employees:
-            print("Payroll Summary: No employees found.")
-            return
         
-        salaries = [emp.salary for emp in self.employees]
+        salaries = [emp.salary for emp in self.employee]
     
-        total_employees = len(salaries)
+        total_employees = len(self.employees)
         total_payroll = sum(salaries)
         average_pay = total_payroll / total_employees
         highest_paid = max(salaries)
@@ -44,10 +41,10 @@ class PayrollReport:
         print("      PAYROLL SUMMARY      ")
         print("-" * 30)
         print(f"Total Employees: {total_employees}")
-        print(f"Total Payroll:   ${total_payroll:,.2f}")
-        print(f"Average Pay:     ${average_pay:,.2f}")
-        print(f"Highest Paid:    ${highest_paid:,.2f}")
-        print(f"Lowest Paid:     ${lowest_paid:,.2f}")
+        print(f"Total Payroll:   ${total_payroll:.2f}")
+        print(f"Average Pay:     ${average_pay:.2f}")
+        print(f"Highest Paid:    ${highest_paid:.2f}")
+        print(f"Lowest Paid:     ${lowest_paid:.2f}")
         print("-" * 30)
         
     def generate_report_file(self, filename):
@@ -61,8 +58,8 @@ class PayrollReport:
         
             f.write(f"{'ID':<10} | {'Name':<20} | {'Salary':<10}\n")
             f.write("-" * 40 + "\n")
-            for emp in self.employees:
-                f.write(f"{emp.id:<10} | {emp.name:<20} | ${emp.salary:,.2f}\n")
+            for employees in self.processor.employees():
+                f.write(f"{employee_name}: ${employee.calculate_pay():.2f}\n")
             
             f.write("\n" + "="*40 + "\n")
             f.write("SUMMARY\n")

@@ -86,12 +86,14 @@ class Employee:
         elif value > 168:
             raise ValueError("Hours worked cannot be above 168.")
         
+        self._hours_worked = value
+        
 
     def calculate_gross_pay(self):
         # TODO: regular pay = min(hours, 40) * rate
         # TODO: overtime pay = max(hours - 40, 0) * rate * 1.5
         # TODO: return total
-
+ 
         regular_pay = min(hours_worked, 40) * hourly_rate
         overtime_pay = max(hours_worked - 40) * hourly_rate * 1.5
         gross_pay = regular_pay + overtime_pay
@@ -100,4 +102,4 @@ class Employee:
     def __str__(self):
         # TODO: return a formatted line with name, ID, rate, hours, gross pay
         
-        return f"{self._name} - {self._employee_id}: {self._hourly_rate}, {self.hours_worked}, {gross_pay}" 
+        return (f"{self._name} - {self._employee_id}: {self._hourly_rate}, {self._hours_worked}, {gross_pay}")

@@ -18,22 +18,36 @@ def main():
     #   2. View payroll summary
     #   3. Generate report file
     #   4. Quit
+
+    processor = PayrollProcessor()
     
- def __init__(self, employee_id, name, hourly_rate):
-        self.employee_id = employee_id
-        self.name = name
-        self.hourly_rate = float(hourly_rate)
-        self.hours_worked = 0
+    with open("employees.txt", "w") as f:
+        f.write("101,Alice,20.0,45\n102,Bob,25.0,40\n103,Charlie,15.0,30\n")
+        
+        processor.load_from_file("employees.txt")
 
-def calculate_pay(self):
-    """Calculates pay, including overtime (1.5x) for hours > 40."""
-    if self.hours_worked <= 40:
-        return self.hours_worked * self.hourly_rate
-    else:
-        regular_pay = 40 * self.hourly_rate
-        overtime_pay = (self.hours_worked - 40) * (self.hourly_rate * 1.5)
-        return regular_pay + overtime_pay
+        report = PayrollReport(PayrollProcessor)
 
+        while True:
+            print("\n--- Payroll Menu ---")
+            print("1. View all employees")
+            print("2. View payroll summary")
+            print("3. Generate report file")
+            print("4. Quit")
+        
+            choice = input("Enter choice (1-4): ")
+
+            if choice == '1':
+                report.display_all_employees()
+            elif choice == '2':
+                report.display_payroll_summary()
+            elif choice == '3':
+                report.generate_report_file()
+            elif choice == '4':
+                print("Exiting.")
+                break
+            else:
+                print("Invalid choice, please try again.")
 
 
 if __name__ == "__main__":

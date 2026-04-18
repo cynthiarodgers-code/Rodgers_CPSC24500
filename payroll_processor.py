@@ -19,13 +19,17 @@ class PayrollProcessor:
 
     def __init__(self):
         # TODO: initialize self._employees as an empty list
-        self._employees = []
+       self._employees = []
         
 
     @property
     def employees(self):
         # TODO: return a COPY of the list, not the original
-        employee_copy = self._employees.copy()
+       return self._employees.copy()
+    
+    @employees.setter
+    def employees(self, value):
+        self._employees = value
         
 
     def load_from_file(self, filename):
@@ -37,24 +41,16 @@ class PayrollProcessor:
         #   - append to self._employees on success
 
         try:
-            with open(filename, 'employee_copy') as file:
-                for line in file:
-                    line = line.strip()
-                    if not line:
-                        continue
-
-                    fields = line.split('\t')
-                    if len(fields) != 4:
-                        print(f"Warning: Skipping invalid line: {line}")
-                        continue
-
-                    try:
-                        new_employee = Employee(*fields)
-                    
-                    except ValueError as e:
-                        print(f"Warning: Could not create employee from line '{line}': {e}")
+            with open(filename) as f:
+                for line in f:
+                    data = line.strip().split(',')
+                    if len(data) == 4:
+                        employee = Employee(data[0], data[1], data[2])
+                        employee.hours_worked = float(data[3])
+                        self.employees.append(emp)
+            print(f"Successfully loaded {len(self.employees)} employees.")
         except FileNotFoundError:
-            print(f"Error: The file '{employee_copy}' was not found.")
+            print(f"Error: File {filename} not found.")
         
 
     def calculate_total_payroll(self):
