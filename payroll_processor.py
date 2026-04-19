@@ -12,6 +12,9 @@ Notes:
 - Catch FileNotFoundError if the file doesn't exist
 """
 
+
+
+
 from employee import Employee
 
 
@@ -43,8 +46,12 @@ class PayrollProcessor:
         try:
             with open(filename) as f:
                 for line in f:
-                    parts = line.strip().split(',')
-                    emp = Employee(parts[0], parts[1], float(parts[2]))
+                    line = line.strip()
+                    if not line:
+                        continue
+                    parts = line.split("\t")
+                    
+                    emp = Employee(parts[0], parts[1], float(parts[2]), float(parts[3]))
                     self.employees.append(emp)
             print(f"Successfully loaded {len(self.employees)} employees.")
         except FileNotFoundError:

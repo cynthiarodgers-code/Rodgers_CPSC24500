@@ -15,21 +15,25 @@ class PayrollReport:
         # TODO: print a header row, then each employee on its own line
         
         print("\n --- Employee Data ---")
-        print(f"{"ID": (employee_id):<5} {"Name" :<20}")
-        # Use self._processor.employees to get the list
+        print(f"{'ID':<10} {'Name':<20}")
+        print("-" * 30)
 
-        for employee in self._processor.employees:
-            print(employee)
+        for emp in self._processor.employees:
+           print(f"{emp.employee_id:<10} {emp.name:<20}")
         
         
 
     def display_payroll_summary(self):
         # TODO: print total employees, total payroll, average pay,
         #       highest paid, lowest paid
+        employees = self._processor.employees
+        if not employees:
+            print("No employees to summarize.")
+            return
         
-        salaries = [emp.salary for emp in self.employees]
+        salaries = [employee.hourly_rate for employee in employees]
     
-        total_employees = len(self.employees)
+        total_employees = len(employees)
         total_payroll = sum(salaries)
         average_pay = total_payroll / total_employees
         highest_paid = max(salaries)
@@ -49,26 +53,18 @@ class PayrollReport:
         # TODO: write the full report (employees + summary) to a text file
         # Use a `with` block
 
-        with open(filename, 'w', encoding='utf-8') as f:
+          with open(filename, 'w', encoding='utf-8') as f:
             f.write("="*40 + "\n")
             f.write("EMPLOYEE REPORT\n")
             f.write("="*40 + "\n\n")
         
-            f.write(f"{'ID':<10} | {'Name':<20} | {'Salary':<10}\n")
+            f.write(f"{'ID':<10} | {'Name':<20}\n")
             f.write("-" * 40 + "\n")
-            for employees in self.processor.employees():
-                f.write(f"{employee_name}: ${employee.calculate_pay():.2f}\n")
             
-            f.write("\n" + "="*40 + "\n")
-            f.write("SUMMARY\n")
-            f.write("="*40 + "\n")
-
-            summary = self.calculate_summary() 
-            f.write(f"Total Employees: {summary['total_count']}\n")
-            f.write(f"Total Payroll:   ${summary['total_payroll']:,.2f}\n")
-            f.write(f"Average Salary:  ${summary['average_salary']:,.2f}\n")
+            for emp in self._processor.employees:
+                f.write(f"{emp.employee_id:<10} | {emp.name:<20}\n")
         
-        print(f"Report successfully generated: {filename}")
+            print(f"Report successfully generated: {filename}")
 
 
 
