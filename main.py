@@ -21,12 +21,15 @@ def main():
 
     processor = PayrollProcessor()
     
-    with open("employees.txt", "w") as f:
-        f.write("101,Alice,20.0,45\n102,Bob,25.0,40\n103,Charlie,15.0,30\n")
-        
+    with open("employees.txt") as f:
+        for line in f:
+            parts = line.strip().split(",")
+            name, employee_id, hourly_rate = parts
+            emp = Employee(name, employee_id, float(rate))
+              
         processor.load_from_file("employees.txt")
 
-        report = PayrollReport(PayrollProcessor)
+        report = PayrollReport(processor)
 
         while True:
             print("\n--- Payroll Menu ---")

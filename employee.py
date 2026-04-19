@@ -42,7 +42,7 @@ class Employee:
         if not name:
             raise ValueError("Name cannot be empty.")
         
-        self._name = name
+        self._name = value
 
 
     @property
@@ -58,7 +58,7 @@ class Employee:
         if not id:
             raise ValueError("Employee ID cannot be empty.")
         
-        self._employee_id = id
+        self._employee_id = value
 
     @property
     def hourly_rate(self):
@@ -89,11 +89,11 @@ class Employee:
         self._hours_worked = value
         
 
-    def calculate_gross_pay(self):
+    def calculate_gross_pay(self,gross_pay):
         # TODO: regular pay = min(hours, 40) * rate
         # TODO: overtime pay = max(hours - 40, 0) * rate * 1.5
         # TODO: return total
- 
+        self._gross_pay = gross_pay
         regular_pay = min(hours_worked, 40) * hourly_rate
         overtime_pay = max(hours_worked - 40) * hourly_rate * 1.5
         gross_pay = regular_pay + overtime_pay

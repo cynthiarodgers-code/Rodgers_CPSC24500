@@ -5,31 +5,29 @@ PayrollReport handles all display and file output. It does not store data itself
 it gets data from the PayrollProcessor passed into its constructor.
 """
 
-
 class PayrollReport:
 
     def __init__(self, processor):
         # TODO: store the processor
         self._processor = processor
-        
-    def get_employee_list(self):
-        return self._processor._employee
     
     def display_all_employees(self):
         # TODO: print a header row, then each employee on its own line
-
-       print("\n--- Employee Payroll Data ---")
-
-       for employee in self._processor.employees:
-            print(f"ID: {employee.employee_id} | Name: {employee.name:<10} | Pay: ${employee.calculate_pay():.2f}")
+        
+        print("\n --- Employee Data ---")
+        print(f"{"ID": (employee_id):<5} {"Name" :<20}")
         # Use self._processor.employees to get the list
+
+        for employee in self._processor.employees:
+            print(employee)
+        
         
 
     def display_payroll_summary(self):
         # TODO: print total employees, total payroll, average pay,
         #       highest paid, lowest paid
         
-        salaries = [emp.salary for emp in self.employee]
+        salaries = [emp.salary for emp in self.employees]
     
         total_employees = len(self.employees)
         total_payroll = sum(salaries)

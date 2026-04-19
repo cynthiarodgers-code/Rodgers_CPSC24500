@@ -25,7 +25,7 @@ class PayrollProcessor:
     @property
     def employees(self):
         # TODO: return a COPY of the list, not the original
-       return self._employees.copy()
+       return list(self._employees)
     
     @employees.setter
     def employees(self, value):
@@ -43,11 +43,9 @@ class PayrollProcessor:
         try:
             with open(filename) as f:
                 for line in f:
-                    data = line.strip().split(',')
-                    if len(data) == 4:
-                        employee = Employee(data[0], data[1], data[2])
-                        employee.hours_worked = float(data[3])
-                        self.employees.append(emp)
+                    parts = line.strip().split(',')
+                    emp = Employee(parts[0], parts[1], float(parts[2]))
+                    self.employees.append(emp)
             print(f"Successfully loaded {len(self.employees)} employees.")
         except FileNotFoundError:
             print(f"Error: File {filename} not found.")
