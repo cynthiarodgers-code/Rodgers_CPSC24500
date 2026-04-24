@@ -38,11 +38,11 @@ class Pet:
     def sleep(self):
         # TODO: raise energy
         self._energy += 20
-        print("Sleeping! Energy is now:", self._energy
+        print("Sleeping! Energy is now:", self._energy)
 
     def status(self):
         # TODO: return a formatted string showing all three stats
-        return f"{self._name} ({seld._species}): hunger={self._hunger}, happy={self._happiness}"
+        return f"{self._name} ({self._species}): hunger={self._hunger}, happy={self._happiness}"
 
     def __str__(self):
         # TODO: return f"{self._name} the {self._species}"
