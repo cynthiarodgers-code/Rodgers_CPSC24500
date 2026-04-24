@@ -1,5 +1,5 @@
 """
-fish.py - Week 5 Starter
+fish.py - Week 5
 
 Fish extends Pet.
 - Override feed() and play()
