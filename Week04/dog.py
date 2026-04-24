@@ -16,7 +16,7 @@ class Dog(Pet):
         # TODO: call super().__init__(name, "Dog")
         # TODO: store breed
         super().__init__(name, "Dog")
-        self._breed = breed
+        self._species = breed
 
     def feed(self):
         # TODO: dog-specific feeding

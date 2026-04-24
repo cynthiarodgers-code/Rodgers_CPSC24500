@@ -22,11 +22,13 @@ def adopt_pet(pets):
     # TODO: ask which type, get name, create the right object, append to pets
     pet_type = input("Choose pet type (cat/dog/fish): ").lower()
     name = input("What is your pet's name? ")
+    
 
     if pet_type == "cat":
         new_pet = Cat(name)
     elif pet_type == "dog":
-        new_pet = Dog(name)
+        breed = input("What is the dog's breed?")
+        new_pet = Dog(name, breed)
     elif pet_type == "fish":
         new_pet = Fish(name)
     else:
@@ -45,7 +47,7 @@ def select_pet(pets):
         return None
     
     for i, pet in enumerate(pets):
-        print(f"{i + 1}. {self._name}")
+        print(f"{i + 1}. {pet._name}")
 
     choice = int(input("Select a pet by number: ")) - 1 
 
@@ -64,20 +66,18 @@ def main():
         elif choice == "2":
             current_pet = select_pet(pets)
             if current_pet:
-                action = input("Feed, Play, or Sleep? ").lower()
-                if action =="feed":
-                    current_pet.feed()
-                elif action == "play":
-                    current_pet.play()
-                elif action == "sleep":
-                    current_pet.sleep()
-                else:
-                    print("Invalid selection!")
+                    action = input("Feed, Play, or Sleep? ").lower()
+                    if action =="feed":
+                        current_pet.feed()
+                    elif action == "play":
+                        current_pet.play()
+                    elif action == "sleep":
+                        current_pet.sleep()
+                    else:
+                        print("Invalid selection!")
                     return
         elif choice =="3":
             break
-
-
 
 if __name__ == "__main__":
     main()
