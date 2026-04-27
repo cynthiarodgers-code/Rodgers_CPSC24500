@@ -17,7 +17,7 @@ class Cat(Pet):
 
     def feed(self):
         # TODO: cat-specific feeding (different numbers than the base class)
-        self._hunger += 15
+        self._hunger -= 15
         self._energy += 10
 
     def play(self):

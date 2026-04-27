@@ -24,6 +24,7 @@ class Pet:
         self._species = species
         self._hunger = 50
         self._happiness = 50
+        self._energy = 50
 
     def feed(self):
         # TODO: lower hunger (don't go below 0)

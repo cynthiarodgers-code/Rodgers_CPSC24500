@@ -50,6 +50,7 @@ def select_pet(pets):
         print(f"{i + 1}. {pet._name}")
 
     choice = int(input("Select a pet by number: ")) - 1 
+    return pets[choice]
 
 
 def main():
@@ -75,7 +76,7 @@ def main():
                         current_pet.sleep()
                     else:
                         print("Invalid selection!")
-                    return
+                    
         elif choice =="3":
             break
 
