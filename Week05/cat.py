@@ -19,11 +19,14 @@ class Cat(Pet):
         # TODO: cat-specific feeding (different numbers than the base class)
         self._hunger -= 15
         self._energy += 10
+        print("Eating! Hunger is now:", self._hunger)
+
 
     def play(self):
         # TODO: cat-specific play behavior
         self._happiness += 20
         self._energy -= 15
+        print("Playing! Happiness is now:", self._happiness)
 
     def purr(self):
         # TODO: return a string like f"{self._name} purrs softly."

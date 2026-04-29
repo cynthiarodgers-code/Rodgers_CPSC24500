@@ -17,14 +17,18 @@ class Fish(Pet):
 
     def feed(self):
         # TODO: fish-specific feeding
-        self._hunger += 5
+        self._hunger -= 5
         self._energy += 10
+        print("Eating! Hunger is now:", self._hunger)
+
 
     def play(self):
         # TODO: fish-specific play
         self._happiness += 10
         self._energy -= 5
+        print("Playing! Happiness is now:", self._happiness)
 
     def sleep(self):
         # TODO: fish-specific sleep behavior (different from base class)
-        return f"{self._name} swims sleepily."
+        print("Sleeping! Energy is now:", self._energy)
+

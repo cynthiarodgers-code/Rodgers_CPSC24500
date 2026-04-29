@@ -22,11 +22,13 @@ class Dog(Pet):
         # TODO: dog-specific feeding
         self._hunger -= 20
         self._energy += 15
+        print("Eating! Hunger is now:", self._hunger)
 
     def play(self):
         # TODO: dog-specific play
         self._happiness += 10
         self._energy -= 10
+        print("Playing! Happiness is now:", self._happiness)
 
     def fetch(self):
         # TODO: return a fetch-themed string
