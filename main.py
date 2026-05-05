@@ -1,52 +1,50 @@
 """
-main.py - Week 4 Starter
+main.py - Week 7 
 
-Loads employees from employees.txt, then runs a menu loop.
+Flow:
+1. Ask for a path to a word file, load via WordCollection.from_file()
+2. Print a count per part of speech
+3. Show available story templates and let the user pick one
+4. Ask how many sentences to generate
+5. Generate and print the sentences
+6. Ask if the user wants another story (loop if yes)
 """
 
-from employee import Employee
-from payroll_processor import PayrollProcessor
-from payroll_report import PayrollReport
+from word_collection import WordCollection
+from story_template import TEMPLATES
 
 
 def main():
-    # TODO: create a PayrollProcessor
-    # TODO: call load_from_file("employees.txt")
-    # TODO: create a PayrollReport with the processor
-
-    # TODO: loop showing a menu:
-    #   1. View all employees
-    #   2. View payroll summary
-    #   3. Generate report file
-    #   4. Quit
-
-    processor = PayrollProcessor()
-    
-               
-    processor.load_from_file("employees.txt")
-
-    report = PayrollReport(processor)
-
+    # TODO: ask for the path; load the WordCollection
+    path = input("Enter the path to the word file: ")
+    words = WordCollection.from_file(path)
+    # TODO: print summary (count per part of speech)
+    print(words)
+    # TODO: loop:
+    #   - show templates with numbers
+    #   - get user choice
+    #   - ask how many sentences
+    #   - call template.generate(words) for each
+    #   - ask "Generate another story?" and break if not yes
     while True:
-        print("\n--- Payroll Menu ---")
-        print("1. View all employees")
-        print("2. View payroll summary")
-        print("3. Generate report file")
-        print("4. Quit")
+        print("\nAvailable Templates:")
+        for i, temp in enumerate(TEMPLATES):
+            print(f"{i}. {temp}")
         
-        choice = input("Enter choice (1-4): ")
+        choice = int(input("Select a template number: "))
+        selected_template = TEMPLATES[choice]
 
-        if choice == '1':
-            report.display_all_employees()
-        elif choice == '2':
-            report.display_payroll_summary()
-        elif choice == '3':
-            report.generate_report_file("report.txt")
-        elif choice == '4':
-            print("Exiting.")
+        num_sentences = int(input("How many sentences would you like to generate? "))
+
+        prin("\n--- My Story ---")
+
+        for _ in range(num_sentences):
+            print(selected_template.generate(words))
+        
+        again = input("\nGenerate another story? (yes/no): ").lower().strip()
+        if again != "yes":
+            print("Goodbye!")
             break
-        else:
-            print("Invalid choice, please try again.")
 
 
 if __name__ == "__main__":
