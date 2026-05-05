@@ -27,9 +27,14 @@ class Word:
 
     def __init__(self, text, part_of_speech):
         # TODO: strip and lowercase text and part_of_speech
+        self._text = text.strip().lower()
+
         # TODO: raise ValueError if POS not in VALID_PARTS
+        if part_of_speech not in self.VALID_PARTS:
+            raise ValueError(f"Invalid part of speech: {part_of_speech}")
+        
         # TODO: store as self._text and self._part_of_speech
-        pass
+        self._part_of_speech = part_of_speech        
 
     @property
     def text(self):
@@ -41,26 +46,38 @@ class Word:
 
     def __eq__(self, other):
         # TODO: if not isinstance(other, Word): return NotImplemented
+        if not isinstance(other, Word):
+            return NotImplemented
+        
         # TODO: equal if same text AND same POS
-        pass
+        return self.text == other.text and self.part_of_speech == other.part_of_speech
+        
 
     def __lt__(self, other):
         # TODO: NotImplemented if not a Word
+        if not isinstance(other, Word):
+            return NotImplemented
+        
         # TODO: compare POS first, then text
-        pass
+        if self.part_of_speech != other.part_of_speech:
+            return self.part_of_speech < other.part_of_speech
+        return self.text < other.text
+        
 
     def __gt__(self, other):
         # TODO: reverse of __lt__
-        pass
+        if not isinstance(other, Word):
+            return NotImplemented
+        return other < self
 
     def __hash__(self):
         # TODO: return hash((self._text, self._part_of_speech))
-        pass
+        return hash(self._text, self._part_of_speech)
 
     def __repr__(self):
         # TODO: return f"Word({self._text!r}, {self._part_of_speech!r})"
-        pass
+        return f"Word({self._text!r}, {self._part_of_speech!r})"
 
     def __str__(self):
         # TODO: return just the text
-        pass
+        return self._text
