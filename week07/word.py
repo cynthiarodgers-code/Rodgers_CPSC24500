@@ -72,7 +72,7 @@ class Word:
 
     def __hash__(self):
         # TODO: return hash((self._text, self._part_of_speech))
-        return hash(self._text, self._part_of_speech)
+        return hash((self._text, self._part_of_speech))
 
     def __repr__(self):
         # TODO: return f"Word({self._text!r}, {self._part_of_speech!r})"

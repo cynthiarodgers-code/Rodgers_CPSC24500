@@ -43,20 +43,27 @@ class StoryTemplate:
         #   - otherwise keep the token as-is
             if token.startswith("{") and token.endswith("}"):
                 pos = token[1:-1]
-                if pos in words:
-                    story_parts.append(random.choice(words[pos]))
+                matches = words.filter_by_pos(pos)
+
+                if len(matches) > 0:
+                    story_parts.append(str(random.choice(list(matches))))
+
                 else:
                     story_parts.append(token)
+
             else:
                 story_parts.append(token)
         # TODO: join with spaces, capitalize, add a period at the end
         story = " ".join(story_parts)
-        return story[0].upper() + story[1:] + "."
+        return story.capitalize() + "."
+    
+    def __str__(self):
+        return f"Template: {self._name}"
+    
 
 # TODO: define at least 3 templates here
 TEMPLATES = [
-        StoryTemplate("Adventure", ["The ", "{adj} ", "{n} ", "{v} ", "{adv} ", "{prep} ", "the ", "{adj} ", "{n} "]),
-        StoryTemplate("Mystery", ["A ", "{adj} ", "{n} ", "was ", "{v} ", "in ", "the ", "{n} "]),
-        StoryTemplate("Simple", ["The ", "{n} ", "{v} ", "{adv} "])
+        StoryTemplate("Adventure", ["The", "{adj}", "{n}", "{v}", "{adv}", "{prep}", "the", "{adj}", "{n}"]),
+        StoryTemplate("Mystery", ["A", "{adj}", "{n}", "was", "{v}", "in", "the", "{n}"]),
+        StoryTemplate("Simple", ["The", "{n}", "{v}", "{adv}"])
     ]
-    
