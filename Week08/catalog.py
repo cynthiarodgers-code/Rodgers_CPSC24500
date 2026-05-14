@@ -29,32 +29,38 @@ class Catalog:
     def __new__(cls):
         # TODO: if cls._instance is None: create the instance and initialize ._items = []
         # TODO: return cls._instance
-        pass
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance._items = []
+        return cls._instance
 
     def add_item(self, item):
         # TODO
-        pass
+        self._items.append(item)
 
     def remove_item(self, title):
         # TODO: remove items whose title matches (case-insensitive)
-        pass
+        normalized_title = title.lower()
+        self._items = [item for item in self._items if item.title.lower() != normalized_title]        
 
     def search_by_title(self, keyword):
         # TODO: return items where keyword is in the title (case-insensitive)
-        pass
+        normalized_keyword = keyword.lower()
+        return [item for item in self._items if normalized_keyword in item.title.lower()]
 
     def search_by_author(self, keyword):
         # TODO: return items where keyword is in the author (case-insensitive)
-        pass
+        normalized_keyword = keyword.lower()
+        return [item for item in self._items if normalized_keyword in item.author.lower()]
 
     def get_all_items(self):
         # TODO: return a sorted list (uses LibraryItem.__lt__)
-        pass
+        return sorted(self._items)
 
     def get_checked_out_items(self):
         # TODO
-        pass
+        return [item for item in self._items if item.checked_out]
 
     def get_available_items(self):
         # TODO
-        pass
+        return [item for item in self._items if not item.checked_out]

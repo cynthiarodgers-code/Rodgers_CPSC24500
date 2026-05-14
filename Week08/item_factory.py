@@ -27,4 +27,11 @@ class ItemFactory:
         # TODO: lowercase item_type for comparison
         # TODO: dispatch on type, unpack extras into the right constructor
         # TODO: raise ValueError for unknown types
-        pass
+        if normalized_type == "book":
+            return Book(title, author, year, *extras)
+        elif normalized_type == "dvd":
+            return DVD(title, author, year, *extras)
+        elif normalized_type == "magazine":
+            return Magazine(title, author, year, *extras)
+        else:
+            raise ValueError(f"Unknown item type: '{item_type}'")
